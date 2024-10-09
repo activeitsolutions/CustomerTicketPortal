@@ -235,7 +235,7 @@ ol, ul {
 * 12. Hero Elements
 **********************************************/
 .hero, .herosmall {
-	background: url(../../images/laptop-computer-writing-technology-web-internet.webp);
+	background: url(../../images/activeit.webp);
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -361,4 +361,54 @@ span.herotext {
 **********************************************/
 code {
 	overflow-x: auto;
+}
+
+/*********************************************
+* 16. Input Fields
+**********************************************/
+input[type="text"], textarea, input[type="email"], input[type="password"], input[type="tel"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(15,160,206,1);
+    border-radius: 4px;
+    background-color: #f6f6f6; /* Dark background color */
+    color: #000; /* Text color */
+	text-shadow: 0px 0px 1px #666;
+	transition: all .3s ease-in-out;
+}
+
+/* Focus styles */
+input[type="text"]:focus, textarea:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="tel"]:focus {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 5px solid rgba(15,160,206,1);
+    outline: none;
+    transition: all .3s ease-in-out;
+	text-shadow: 0px 0px 1px #666;
+}
+
+/* Styling the submit button */
+input[type="submit"] {
+    background-color: rgba(15,160,206,1);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+	text-shadow: 0px 0px 0px #000;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(15,160,206,1);
+	box-shadow: 0px 0px 10px rgba(0,0,0,1);
+    transition: all .3s ease-in-out;
 }

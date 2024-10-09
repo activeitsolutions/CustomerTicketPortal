@@ -4,6 +4,7 @@ function parse_shortcodes($content) {
     $shortcodes = [
         'rss' => 'shortcode_rss_feed',
         'pre' => 'shortcode_pre',
+		'php' => 'shortcode_php',
         // Add more shortcodes as needed
     ];
 

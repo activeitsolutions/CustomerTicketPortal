@@ -1,0 +1,98 @@
+<!-- pagetitle:Submit a Ticket -->
+<!-- pagelayout:page-html -->
+<!-- pagedate: -->
+<!-- pageimage:images/activeit.webp -->
+<!-- pageexcerpt:Creating websites shouldn't be a daunting task. With Skeleton Website Framework, simplicity and functionality merge seamlessly. -->
+<!-- pagekeywords:simple,skeleton,framework,development,website,simplicity,security,ease,customize,flexibility -->
+<!-- pageauthor: -->
+<!-- pagetype:website -->
+
+<form id="ticketForm">
+    <!-- Dropdown for issue type -->
+    <label for="issueType">Select Issue Type:</label>
+    <select id="issueType" name="Issue Type" onchange="updateForm()">
+      <option value="">--Select--</option>
+      <option value="new365user">New 365 User</option>
+      <option value="login">Login Issue</option>
+    </select><br>
+
+    [php] include "forms/new365user.html"; [/php]
+    [php] include "forms/login.html"; [/php]
+
+	<br>
+	<input type="submit" value="Send Email" onclick="sendEmail()">
+    
+  </form>
+
+<script>
+    function updateForm() {
+      // Clear all input fields before updating form
+      var form = document.getElementById("ticketForm");
+      for (var i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].type === "text" || form.elements[i].tagName.toLowerCase() === "textarea") {
+          form.elements[i].value = "";  // Clear text and textarea fields
+        }
+      }
+
+      // Get the selected value from the dropdown
+      var issueType = document.getElementById("issueType").value;
+
+      // Hide all the optional fields first and remove the "required" attribute
+      var new365userFields = document.getElementById("new365userFields").querySelectorAll('input, textarea');
+      var loginFields = document.getElementById("loginFields").querySelectorAll('input, textarea');
+      hideFields(new365userFields);
+      hideFields(loginFields);
+
+      // Show fields based on the selected issue type and add the "required" attribute only to fields with "data-required"
+	  // Now, instead of using the "required" html attribute, we use data-required="true" to the fields that should be required when displayed.
+      if (issueType === "new365user") {
+        showFields(new365userFields);
+        document.getElementById("new365userFields").style.display = "block";
+      } else if (issueType === "login") {
+        showFields(loginFields);
+        document.getElementById("loginFields").style.display = "block";
+      }
+    }
+
+    function hideFields(fields) {
+      fields.forEach(function(field) {
+        field.removeAttribute('required');
+        field.closest('div').style.display = 'none';  // Hide the parent div of the field
+      });
+    }
+
+    function showFields(fields) {
+      fields.forEach(function(field) {
+        if (field.getAttribute('data-required') === "true") {
+          field.setAttribute('required', 'true');
+        }
+        field.closest('div').style.display = 'block';  // Show the parent div of the field
+      });
+    }
+
+    function sendEmail() {
+      var form = document.getElementById("ticketForm");
+
+      // Check if the form is valid
+      if (!form.reportValidity()) {
+        return;  // Stop execution if the form is invalid
+      }
+
+      var subject = "Customer Ticket";
+      var formData = new FormData(form); // Collect all form data
+      var message = "";
+
+      // Loop through all form data and create the message body
+      for (var [key, value] of formData.entries()) {
+        if (value) {  // Only include non-empty fields
+          message += key + ": " + value + "\n";
+        }
+      }
+
+      var mailtoLink = "mailto:bwoods@activeitsolutions.com" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(message);
+
+      window.location.href = mailtoLink;
+    }
+</script>

@@ -110,19 +110,18 @@
 		<div class="hero">
 			<span class="herotext"><?php echo $WebsiteTitle; ?></span>
 		</div>
+		<div style="clear:both"></div>
+			<div class="herodownarrowcontainer textalign-center">
+				<div class="arrow bounce">
+					<a href="#maincontent" class="disable-scrolling-underline"><i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
 	<?php } else { ?>
 		<div class="herosmall">
 			<span class="herotext"><?php echo $WebsiteTitle; ?></span>
 		</div>
 	<?php } ?>
-	
-	<div style="clear:both"></div>
-		<div class="herodownarrowcontainer textalign-center">
-			<div class="arrow bounce">
-				<a href="#maincontent" class="disable-scrolling-underline"><i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
-			</div>
-		</div>
-	</div>
 	
 <a id="maincontent"></a>
 

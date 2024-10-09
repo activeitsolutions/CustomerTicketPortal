@@ -1,0 +1,50 @@
+<!-- Software related fields -->
+	<div id="new365userFields" style="display: none;">
+
+		<!-- Question: Is new user replacing a previous employee or is this a new position? -->
+		<br>
+		<br>
+		<label for="userReplaceOrNew"><b>Is the new user replacing a previous employee or is this a new position?</b></label><br>
+		<select id="userReplaceOrNew" name="User Replace Or New">
+			<option value="">--Select--</option>
+			<option value="replacing">Replacing Old Employee</option>
+			<option value="new_position">New Position</option>
+		</select><br><br>
+
+		<!-- Question: Will this user require assistance setting up their account, 2 Factor Authentication, phone, and email? -->
+		<label for="setupAssistance"><b>Will this user require assistance setting up their account, 2 Factor Authentication, phone, and email?</b></label><br>
+		<select id="setupAssistance" name="Setup Assistance">
+			<option value="">--Select--</option>
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select><br><br>
+
+		<!-- Question: First/Last Name -->
+		<label for="firstName"><b>First Name</b></label><br>
+		<input type="text" id="firstName" name="First Name" data-required="true"><br><br>
+
+		<label for="lastName"><b>Last Name</b></label><br>
+		<input type="text" id="lastName" name="Last Name" data-required="true"><br><br>
+
+		<!-- Question: Phone Number (for 2-FA) -->
+		<label for="phoneNumber"><b>Phone Number (for 2-FA)</b></label><br>
+		<input type="tel" id="phoneNumber" name="Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-1234"><br><br>
+
+		<!-- Question: Preferred Email Address -->
+		<label for="emailAddress"><b>Preferred Email Address</b></label><br>
+		<input type="text" id="emailAddress" name="Email Address" placeholder="johndoe@domain.com" data-required="true"><br><br>
+
+		<!-- Question: Company Title Position -->
+		<label for="companyPosition"><b>Company Title/Position</b></label><br>
+		<input type="text" id="companyPosition" name="Company Position"><br><br>
+
+		<!-- Question: Supported Device -->
+		<label for="supportedDevice"><b>What is the 'Supported Device' they will be working from?</b></label><br>
+		<textarea id="supportedDevice" name="Supported Device" rows="4" cols="50" placeholder="Enter device details" data-required="true"></textarea><br>
+		<small>Note: If the setup is not associated with a supported device, the support will be marked as 'Unsupported' and charged at the 'off-contract' rate.</small><br><br>
+		
+		<!-- Question: Additional Details -->
+		<label for="additionalDetails"><b>Additional Details</b></label><br>
+		<textarea id="additionalDetails" name="Additional Details" rows="4" cols="50" placeholder="Enter any Additional Details"></textarea><br>
+
+	</div>
