@@ -1,0 +1,62 @@
+<!-- pagetitle:Create a New Microsoft 365 User -->
+<!-- pagelayout:page-form -->
+<!-- pagedate: -->
+<!-- pageimage:images/activeit.webp -->
+<!-- pageexcerpt:Create a New Microsoft 365 User -->
+<!-- pagekeywords:simple,skeleton,framework,development,website,simplicity,security,ease,customize,flexibility -->
+<!-- pageauthor: -->
+<!-- pagetype:website -->
+
+
+<div class="form-group"><label><strong>Is this user replacing a previous employee or is this a new position?</strong> <span class="required-asterisk">*</span> </label>
+	<div>
+		<input type="radio" id="Is this user replacing a previous employee or is this a new position?-0" name="Is this user replacing a previous employee or is this a new position?" value="New Employee" required="required">
+		<label for="Is this user replacing a previous employee or is this a new position?-0">New Employee</label>
+	</div>
+	<div>
+		<input type="radio" id="Is this user replacing a previous employee or is this a new position?-1" name="Is this user replacing a previous employee or is this a new position?" value="Replacement" required="required">
+		<label for="Is this user replacing a previous employee or is this a new position?-1">Replacement</label>
+	</div>
+</div>
+<div class="form-group"><label><strong>Will this user need assistance in setting up any of the following?</strong> <span class="required-asterisk">*</span> <span class="tooltip-icon" data-tooltip="Check all that apply" style="cursor: pointer;"><i class="fa fa-info-circle" aria-hidden="true"></i></span></label>
+	<div>
+		<input type="checkbox" id="Will this user need assistance in setting up any of the following?-0" name="Will this user need assistance in setting up any of the following?" value="Account" required="required">
+		<label for="Will this user need assistance in setting up any of the following?-0">Account</label>
+	</div>
+	<div>
+		<input type="checkbox" id="Will this user need assistance in setting up any of the following?-1" name="Will this user need assistance in setting up any of the following?" value="2 Factor Authentication" required="required">
+		<label for="Will this user need assistance in setting up any of the following?-1">2 Factor Authentication</label>
+	</div>
+	<div>
+		<input type="checkbox" id="Will this user need assistance in setting up any of the following?-2" name="Will this user need assistance in setting up any of the following?" value="Phone" required="required">
+		<label for="Will this user need assistance in setting up any of the following?-2">Phone</label>
+	</div>
+	<div>
+		<input type="checkbox" id="Will this user need assistance in setting up any of the following?-3" name="Will this user need assistance in setting up any of the following?" value="Email" required="required">
+		<label for="Will this user need assistance in setting up any of the following?-3">Email</label>
+	</div>
+	<div>
+		<input type="checkbox" id="Will this user need assistance in setting up any of the following?-4" name="Will this user need assistance in setting up any of the following?" value="This user does not require set up assistance" required="required">
+		<label for="Will this user need assistance in setting up any of the following?-4">This user does not require set up assistance</label>
+	</div>
+</div>
+<div class="form-group">
+	<label for="Full Name"><strong>Full Name</strong> <span class="required-asterisk">*</span> </label>
+	<input type="text" id="Full Name" name="Full Name" placeholder="John/Jane Doe" required="required">
+</div>
+<div class="form-group">
+	<label for="Mobile Phone"><strong>Mobile Phone</strong> <span class="required-asterisk">*</span> <span class="tooltip-icon" data-tooltip="This will be used for 2 Factor Authentication setup (if requested)" style="cursor: pointer;"><i class="fa fa-info-circle" aria-hidden="true"></i></span></label>
+	<input type="text" id="Mobile Phone" name="Mobile Phone" placeholder="555-555-1234" required="required">
+</div>
+<div class="form-group">
+	<label for="Preferred Email Prefix"><strong>Preferred Email Prefix</strong>  <span class="tooltip-icon" data-tooltip="You can either enter a full email address or just the prefix. This is only used to try to make setup as seamless as possible." style="cursor: pointer;"><i class="fa fa-info-circle" aria-hidden="true"></i></span></label>
+	<input type="email" id="Preferred Email Prefix" name="Preferred Email Prefix" placeholder="jdoe">
+</div>
+<div class="form-group">
+	<label for="Company Title/Position"><strong>Company Title/Position</strong>  </label>
+	<input type="text" id="Company Title/Position" name="Company Title/Position" placeholder="Manager/Sales">
+</div>
+<div class="form-group">
+	<label for="Device Name of the Supported Device this user will be using"><strong>Device Name of the Supported Device this user will be using</strong> <span class="required-asterisk">*</span> <span class="tooltip-icon" data-tooltip="You can view the device name by clicking on " start"="" and="" typing="" in="" "name".="" one="" of="" the="" first="" results="" will="" be="" "view="" your="" pc="" name",="" click="" it.="" settings="" "about"="" page="" display.="" "device="" name"="" is="" displayed="" center="" near="" top."="" style="cursor: pointer;"><i class="fa fa-info-circle" aria-hidden="true"></i></span></label>
+	<input type="text" id="Device Name of the Supported Device this user will be using" name="Device Name of the Supported Device this user will be using" placeholder="JANE-PC" required="required">
+</div>

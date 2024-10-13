@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Builder with CSS Tooltips</title>
+    <style>
+        .form-group {
+            margin-bottom: 1em;
+            position: relative;
+        }
+        .tooltip-icon {
+            color: #007BFF;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        .tooltip-icon:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            top: 20px;
+            left: 0;
+            white-space: nowrap;
+            font-size: 12px;
+        }
+        .required-asterisk {
+            color: red;
+        }
+        .form-container {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Form Builder</h1>
+
+<!-- Form Builder Interface -->
+<div>
+    <label for="fieldType">Field Type:</label>
+    <select id="fieldType">
+        <option value="text">Text</option>
+        <option value="email">Email</option>
+        <option value="textarea">Textarea</option>
+        <option value="radio">Radio</option>
+        <option value="checkbox">Checkbox</option>
+        <option value="select">Select Dropdown</option>
+    </select>
+</div>
+
+<div>
+    <label for="labelText">Label Text:</label>
+    <input type="text" id="labelText">
+</div>
+
+<div>
+    <label for="fieldName">Field Name:</label>
+    <input type="text" id="fieldName">
+</div>
+
+<div>
+    <label for="placeholderText">Placeholder (Optional):</label>
+    <input type="text" id="placeholderText">
+</div>
+
+<div>
+    <label for="optionsText">Options (Comma separated for radio/checkbox/select):</label>
+    <input type="text" id="optionsText">
+</div>
+
+<div>
+    <label for="tooltipText">Tooltip (Optional):</label>
+    <input type="text" id="tooltipText">
+</div>
+
+<div>
+    <label for="isRequired">Required?</label>
+    <input type="checkbox" id="isRequired">
+</div>
+
+<button id="addField">Add Field</button>
+
+<!-- Form Preview -->
+<h2>Form Preview</h2>
+<div id="formPreview" class="form-container"></div>
+
+<!-- Generated HTML Output -->
+<h2>Generated HTML</h2>
+<textarea id="generatedCode" rows="10" style="width:100%;"></textarea>
+
+<script>
+document.getElementById('addField').addEventListener('click', function() {
+    const fieldType = document.getElementById('fieldType').value;
+    const labelText = document.getElementById('labelText').value;
+    const fieldName = document.getElementById('fieldName').value;
+    const placeholderText = document.getElementById('placeholderText').value;
+    const optionsText = document.getElementById('optionsText').value;
+    const tooltipText = document.getElementById('tooltipText').value;
+    const isRequired = document.getElementById('isRequired').checked;
+    const formPreview = document.getElementById('formPreview');
+
+    let newField = '';
+    if (!labelText || !fieldName) {
+        alert('Please provide both label text and field name.');
+        return;
+    }
+
+    // Tooltip icon HTML
+    let tooltipIcon = '';
+    if (tooltipText) {
+        tooltipIcon = `<span class="tooltip-icon" data-tooltip="${tooltipText}" style="cursor: pointer;"><i class="fa fa-info-circle" aria-hidden="true"></i></span>`;
+    }
+
+    // Required attribute and asterisk
+    let requiredAttr = isRequired ? 'required="required"' : '';
+    let requiredAsterisk = isRequired ? '<span class="required-asterisk">*</span>' : '';
+
+    // Create field based on the selected type
+    switch (fieldType) {
+        case 'text':
+        case 'email':
+            newField = `
+<div class="form-group">
+	<label for="${fieldName}"><strong>${labelText}</strong> ${requiredAsterisk} ${tooltipIcon}</label>
+	<input type="${fieldType}" id="${fieldName}" name="${fieldName}" placeholder="${placeholderText}" ${requiredAttr}>
+</div>`;
+            break;
+        case 'textarea':
+            newField = `
+<div class="form-group">
+	<label for="${fieldName}"><strong>${labelText}</strong> ${requiredAsterisk} ${tooltipIcon}</label>
+	<textarea id="${fieldName}" name="${fieldName}" placeholder="${placeholderText}" ${requiredAttr}></textarea>
+</div>`;
+            break;
+        case 'radio':
+        case 'checkbox':
+            const options = optionsText.split(',').map(opt => opt.trim());
+            newField = `
+<div class="form-group"><label><strong>${labelText}</strong> ${requiredAsterisk} ${tooltipIcon}</label>`;
+            options.forEach((option, index) => {
+                newField += `
+	<div>
+		<input type="${fieldType}" id="${fieldName}-${index}" name="${fieldName}" value="${option}" ${requiredAttr}>
+		<label for="${fieldName}-${index}">${option}</label>
+	</div>`;
+            });
+            newField += `
+</div>`;
+            break;
+        case 'select':
+            const selectOptions = optionsText.split(',').map(opt => opt.trim());
+            newField = `
+<div class="form-group"><label for="${fieldName}"><strong>${labelText}</strong> ${requiredAsterisk} ${tooltipIcon}</label><br />
+	<select id="${fieldName}" name="${fieldName}" ${requiredAttr}>`;
+            selectOptions.forEach(option => {
+                newField += `
+		<option value="${option}">${option}</option>`;
+            });
+            newField += `
+	</select>
+</div>`;
+            break;
+        default:
+            return;
+    }
+
+    // Add the new field to the form preview
+    formPreview.insertAdjacentHTML('beforeend', newField);
+
+    // Update the generated code textarea
+    const generatedHTML = formPreview.innerHTML;
+    document.getElementById('generatedCode').value = generatedHTML;
+});
+</script>
+
+</body>
+</html>
