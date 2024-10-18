@@ -84,7 +84,7 @@
 										if (parentLabel !== currentGroupLabel) {
 											currentGroupLabel = parentLabel;
 											emailBody += `
-					<strong>${currentGroupLabel}:</strong>\n`;
+					${currentGroupLabel}:\n`;
 										}
 										if (element.checked) {
 											emailBody += element.nextElementSibling.textContent.trim() + '\n';
@@ -95,7 +95,7 @@
 										if (label) {
 											const labelText = label.childNodes[0].textContent.trim();
 											emailBody += `
-					<strong>${labelText}:</strong>\n` + element.value.trim() + '\n';
+					${labelText}:\n` + element.value.trim() + '\n';
 										}
 									}
 								}
