@@ -23,7 +23,7 @@
 				<form id="ticketForm">
 					<div class="form-group">
 						<label for="Ticket Title"><strong>Ticket Title</strong> <span class="required-asterisk">*</span> <span class="tooltip-icon" data-tooltip="Please provide a clear and descriptive title to help us quickly identify your issue from a list and make it easier to locate your ticket through search in the future." style="cursor: pointer;"><i class="fa fa-info-circle" aria-hidden="true"></i></span></label>
-						<input type="text" id="Ticket Title" name="Ticket Title" placeholder="<?php echo $pagetitle; ?>" required="required">
+						<input type="text" id="Ticket Title" name="Ticket Title" placeholder="<?php echo 'I would like to... ' . $pagetitle; ?>" required="required">
 					</div>
 					<?php
 						$filename = file_get_contents("./pages/" . $pagename . ".html");
