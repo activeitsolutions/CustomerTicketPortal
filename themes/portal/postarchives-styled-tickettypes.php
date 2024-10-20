@@ -17,7 +17,7 @@
 
 			<?php
 				// Folder containing the Article files
-				$postsFolder = 'posts';
+				$postsFolder = 'tickettypes';
 
 				// Array to store file details
 				$fileDetails = array();
@@ -48,19 +48,19 @@
 				/* SORTING METHODS */
 
 				// Sort the array by date in descending order
-				usort($fileDetails, function ($a, $b) {
-					return strtotime($b['date']) - strtotime($a['date']);
-				});
-				
-				// Sort the array by title in descending order (A-Z)
 				// usort($fileDetails, function ($a, $b) {
-					// return strcmp($a['title'], $b['title']); // strcmp for string comparison (A-Z)
+					// return strtotime($b['date']) - strtotime($a['date']);
 				// });
 				
-				/* END SORTING METHODS
+				// Sort the array by title in descending order (A-Z)
+				usort($fileDetails, function ($a, $b) {
+					return strcmp($a['title'], $b['title']); // strcmp for string comparison (A-Z)
+				});
+				
+				/* END SORTING METHODS */
 
 				// Pagination
-				$itemsPerPage = 5;
+				$itemsPerPage = 25;
 				$page = isset($_GET['page']) ? $_GET['page'] : 1;
 				$startIndex = ($page - 1) * $itemsPerPage;
 				$fileDetailsPage = array_slice($fileDetails, $startIndex, $itemsPerPage);
@@ -71,13 +71,14 @@
 				foreach ($fileDetailsPage as $fileDetail) {
 					echo '<div class="column flex-basis-300">';
 					$dateFormatted = date('m/d/Y', strtotime($fileDetail['date']));
-					echo '<b><a href="' . $postsFolder . '/' . basename($fileDetail['filename'], '.html') . '">' . $fileDetail['title'] . '</a></b> </br> ' . $dateFormatted . '</br>' . 'by <i>' . $fileDetail['author'] . '</i></br>';
+					echo '<b><a href="' . $postsFolder . '/' . basename($fileDetail['filename'], '.html') . '">' . $fileDetail['title'] . '</b></br></br>';
 					if (file_exists($fileDetail['image'])) {
 						echo '<img src="' . $fileDetail['image'] . '" alt="' . $fileDetail['title'] . '"><br>';
 					} else {
 						echo 'Image not found for ' . $fileDetail['title'] . '<br>';
 						echo 'Imagepath: ' . $fileDetail['image'];
 					}
+					echo '</a>';
 					echo '<p>' . $fileDetail['excerpt'] . '</p><br>';
 					echo '</div>';
 				}
